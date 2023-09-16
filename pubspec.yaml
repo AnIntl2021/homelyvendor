@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: '>=3.0.5 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,38 +35,75 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
-  paginate_firestore: ^1.0.0
+  # paginate_firestore: ^1.0.0
   get: ^4.1.4
   font_awesome_flutter: ^9.1.0
-  cloud_firestore: ^2.2.2
-  firebase_core: ^1.3.0
-  firebase_auth: ^1.4.1
-  firebase_messaging: ^10.0.2
-  firebase_storage: ^8.1.3
-  firebase_phone_auth_handler: ^0.0.7
-  dependencies:
-  splash_screen_view: ^3.0.0
-  badges: ^2.0.1
-  animated_text_kit: ^4.2.1
-  carousel_pro: ^1.0.0
-  geocoder: ^0.2.1
-  location: ^4.3.0
-  intl: ^0.17.0
-  in_app_review: ^2.0.2
-  fluttertoast: ^8.0.7
-  adr_in_app_review: ^0.0.1
-  intent: ^1.4.0
-  contactus: ^1.1.9
+  # cloud_firestore: ^2.2.2
+  # firebase_core: ^1.3.0
+  # firebase_auth: ^1.4.1
+  # firebase_messaging: ^10.0.2
+  # firebase_storage: ^8.1.3
+  # firebase_phone_auth_handler: ^0.0.7
+  # dependencies:
+  # splash_screen_view: ^3.0.0
+  # badges: ^2.0.1
+  # animated_text_kit: ^4.2.1
+  # carousel_pro: ^1.0.0
+  # geocoder: ^0.2.1
+  # location: ^4.3.0
+  # intl: ^0.17.0
+  # in_app_review: ^2.0.2
+  # fluttertoast: ^8.0.7
+  # adr_in_app_review: ^0.0.1
+  # intent: ^1.4.0
+  # contactus: ^1.1.9
   url_launcher: ^6.0.9
-  flutter_carousel_slider: ^1.0.8
-  flutter_local_notifications: ^6.0.0
-  flutter_launcher_icons: ^0.9.0
-  custom_switch: ^0.0.1
-  image_picker: ^0.8.1+3
-  flutter_image_compress: ^1.0.0
-  shared_preferences: ^2.0.6
-  geoflutterfire: ^3.0.1
-  workmanager: ^0.4.1
+  # flutter_carousel_slider: ^1.0.8
+  # flutter_local_notifications: ^6.0.0
+  # flutter_launcher_icons: ^0.9.0
+  # custom_switch: ^0.0.1
+  # image_picker: ^0.8.1+3
+  # flutter_image_compress: ^1.0.0
+  # shared_preferences: ^2.0.6
+  # geoflutterfire: ^3.0.1
+  # workmanager: ^0.4.1
+
+dependency_overrides: 
+  google_fonts: 
+#   paginate_firestore: 
+  get: 
+  font_awesome_flutter: 
+#   cloud_firestore: 
+#   firebase_core: 
+#   firebase_auth: 
+#   firebase_messaging: 
+#   firebase_storage:
+#   firebase_phone_auth_handler:
+#   dependencies:
+#   splash_screen_view:
+#   badges:
+#   animated_text_kit:
+#   carousel_pro:
+  # geocoder:
+  # location:
+#   intl: 
+#   in_app_review:
+#   fluttertoast:
+#   adr_in_app_review:
+#   intent:
+#   contactus:
+  url_launcher:
+#   flutter_carousel_slider:
+#   flutter_local_notifications:
+#   flutter_launcher_icons:
+  # custom_switch:
+#   image_picker: 
+#   flutter_image_compress:
+#   shared_preferences:
+  # geoflutterfire:
+#   workmanager:
+
+
 
 dev_dependencies:
   flutter_test:

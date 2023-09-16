@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OrderTotal extends StatefulWidget {
-  const OrderTotal({Key key}) : super(key: key);
+  const OrderTotal({super.key});
 
   @override
   _OrderTotalState createState() => _OrderTotalState();
@@ -14,81 +14,67 @@ class _OrderTotalState extends State<OrderTotal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Order Detail"),),
+      appBar: AppBar(
+        title: Text("Order Detail"),
+      ),
       body: SingleChildScrollView(
-
         child: Center(
-
-          child: Column(
-
-            children: [
-              Container(
-                margin: EdgeInsets.only(top: 50),
-                child: Text(
-                  "Order Id: 123456",
-                  style: GoogleFonts.basic(
-                      color: Colors.blue,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-
-              SizedBox(
-                height: 20,
-              ),
-
-              ElevatedButton(onPressed: (){
-
-              }, child: Text("ACCEPT",
-                  style: GoogleFonts.basic(
-                      color: Colors.white))),
-                SizedBox(
-                width: 20,
-              ),
-
-          Visibility(
-            visible: true ,
-         child:   ElevatedButton(
-             style: ButtonStyle(
-               backgroundColor:
-               MaterialStateProperty.all(Colors.red),
-             ),
-             onPressed: (){
-
-            }, child: Text("CANCEL",
+            child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              child: Text(
+                "Order Id: 123456",
                 style: GoogleFonts.basic(
-                    color: Colors.white))),
-
-          ),
-
-              InkWell(
-                  onTap: () {
-                    launch('tel:${9653137263}');
-                  },
-
-                  child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text("Customer Number: ${9653137263}"),
-                      ))),SizedBox(height: 50),
-              Text("Customer Address: Mumbai 4--612"),
-              Divider(
-                thickness: 1,
+                    color: Colors.blue,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
               ),
-
-              Text(
-                "Order Details",
-                style: GoogleFonts.basic(fontSize: 18),
-              ),
-
-              cartListNew(),
-              footer(context, "300", "0","12",
-                 "100", "12", "100")
-            ],
-          )
-        ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () {},
+                child: Text("ACCEPT",
+                    style: GoogleFonts.basic(color: Colors.white))),
+            SizedBox(
+              width: 20,
+            ),
+            Visibility(
+              visible: true,
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red),
+                  ),
+                  onPressed: () {},
+                  child: Text("CANCEL",
+                      style: GoogleFonts.basic(color: Colors.white))),
+            ),
+            InkWell(
+                onTap: () {
+                  launch('tel:${9653137263}');
+                },
+                child: Container(
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.blue)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Customer Number: ${9653137263}"),
+                    ))),
+            SizedBox(height: 50),
+            Text("Customer Address: Mumbai 4--612"),
+            Divider(
+              thickness: 1,
+            ),
+            Text(
+              "Order Details",
+              style: GoogleFonts.basic(fontSize: 18),
+            ),
+            cartListNew(),
+            footer(context, "300", "0", "12", "100", "12", "100")
+          ],
+        )),
       ),
     );
   }
@@ -96,7 +82,7 @@ class _OrderTotalState extends State<OrderTotal> {
   footer(BuildContext context, String subTotal, String wallet, String discount,
       String total, String delivery, String savings) {
     var earning = ((double.parse(subTotal) - double.parse(savings)) -
-        ((double.parse(subTotal)) * 1))
+            ((double.parse(subTotal)) * 1))
         .toString();
     return Card(
       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
@@ -113,15 +99,14 @@ class _OrderTotalState extends State<OrderTotal> {
             // SizedBox(height: 8, width: 0),
             // billRow("Commision",
             //     ((double.parse(subTotal) * 1)).toString()),
-           SizedBox(height: 8, width: 0),
+            SizedBox(height: 8, width: 0),
             billRow("Total", earning.toString()),
-           SizedBox(height: 8, width: 0), SizedBox(height: 8, width: 0),
+            SizedBox(height: 8, width: 0), SizedBox(height: 8, width: 0),
           ],
         ),
       ),
     );
   }
-
 
   Row billRow(String text, String price) {
     return Row(
@@ -141,7 +126,8 @@ class _OrderTotalState extends State<OrderTotal> {
             children: [
               Text(
                 "\₹",
-                style: TextStyle(color: Colors.deepOrange.shade700, fontSize: 14),
+                style:
+                    TextStyle(color: Colors.deepOrange.shade700, fontSize: 14),
               ),
               SizedBox(
                 width: 5,
@@ -169,16 +155,14 @@ class _OrderTotalState extends State<OrderTotal> {
                 "price",
                 "1",
                 "document.id",
-               true,
-                 "100",
-               (int.parse("200") - int.parse("100"))
-                    .toString(),
+                true,
+                "100",
+                (int.parse("200") - int.parse("100")).toString(),
                 "200",
                 "100",
                 1,
                 context,
-                "recipe"))
-    );
+                "recipe")));
   }
 
   createCartListItem(
@@ -228,14 +212,16 @@ class _OrderTotalState extends State<OrderTotal> {
                             title,
                             maxLines: 2,
                             softWrap: true,
-                            style: TextStyle(fontSize: 14, color: Colors.blueGrey),
+                            style:
+                                TextStyle(fontSize: 14, color: Colors.blueGrey),
                           ),
                         ),
                         Text(
                           recipe,
                           maxLines: 2,
                           softWrap: true,
-                          style: TextStyle(fontSize: 14, color: Colors.blueGrey),
+                          style:
+                              TextStyle(fontSize: 14, color: Colors.blueGrey),
                         ),
                         Text(
                           "Quantity: $quantity",
@@ -272,14 +258,14 @@ class _OrderTotalState extends State<OrderTotal> {
                                         "Rs.${price}",
                                         style: discountVisibility
                                             ? TextStyle(
-                                          fontSize: 14,
-                                          color: Colors.blueGrey,
-                                          decoration:
-                                          TextDecoration.lineThrough,
-                                        )
+                                                fontSize: 14,
+                                                color: Colors.blueGrey,
+                                                decoration:
+                                                    TextDecoration.lineThrough,
+                                              )
                                             : TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.purple.shade400),
+                                                fontSize: 16,
+                                                color: Colors.purple.shade400),
                                       ),
                                     ],
                                   ),
@@ -306,9 +292,9 @@ class _OrderTotalState extends State<OrderTotal> {
                   height: 25,
                   child: Center(
                       child: Text(
-                        "₹ ${discount} OFF",
-                        style: GoogleFonts.arvo(fontSize: 12, color: Colors.white),
-                      )),
+                    "₹ ${discount} OFF",
+                    style: GoogleFonts.arvo(fontSize: 12, color: Colors.white),
+                  )),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(6)),
                     color: Colors.green,
@@ -319,10 +305,4 @@ class _OrderTotalState extends State<OrderTotal> {
       ),
     );
   }
-
-
-
-
-
-
 }

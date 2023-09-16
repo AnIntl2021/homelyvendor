@@ -1,4 +1,3 @@
-import 'package:custom_switch/custom_switch.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -14,7 +13,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -50,42 +48,41 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       drawer: Drawer(
         child: Container(
-          margin: EdgeInsets.only(top: 50),
+          margin: const EdgeInsets.only(top: 50),
           child: Center(
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.grid_4x4),
-                  title: Text('Category List'),
+                  leading: const Icon(Icons.grid_4x4),
+                  title: const Text('Category List'),
                   onTap: () => {},
                 ),
                 ListTile(
-                  leading: Icon(Icons.list),
-                  title: Text('Product List'),
+                  leading: const Icon(Icons.list),
+                  title: const Text('Product List'),
                   onTap: () => {
-                    Get.to(CategoryPage(
-                      // businessName:
-                      // (widget.businessName ?? businessName1),
-                    ))
+                    Get.to(const CategoryPage(
+                        // businessName:
+                        // (widget.businessName ?? businessName1),
+                        ))
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.monetization_on),
-                  title: Text('Payments'),
+                  leading: const Icon(Icons.monetization_on),
+                  title: const Text('Payments'),
                   onTap: () => {
-                    Get.to(OrderHistory(
-                      // businessName:
-                      // widget.businessName ?? businessName1,
-                    ))
+                    Get.to(const OrderHistory(
+                        // businessName:
+                        // widget.businessName ?? businessName1,
+                        ))
                   },
                 ),
                 ListTile(
-                  leading: Icon(Icons.door_back_door),
-                  title: Text('Logout'),
+                  leading: const Icon(Icons.door_back_door),
+                  title: const Text('Logout'),
                   onTap: () => {
                     // SharedPreferences.getInstance().then((value) {
                     //   value.clear().then((value) {
@@ -100,10 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       appBar: AppBar(
-          title: Text("Vendor"),
-          actions: [ Padding(
+        title: const Text("Vendor"),
+        actions: [
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CustomSwitch(
+            child: Switch(
               value: true,
               activeColor: Colors.green,
               onChanged: (value) {
@@ -111,29 +109,31 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
           ),
-            SizedBox(width: 50,),
-            InkWell(
-              onTap: (){
-                Get.to(NotificationPage());
-              },
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Icon(
-                        FontAwesomeIcons.bell
-                    ),
+          const SizedBox(
+            width: 50,
+          ),
+          InkWell(
+            onTap: () {
+              Get.to(const NotificationPage());
+            },
+            child: Stack(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(FontAwesomeIcons.bell),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    "3",
+                    style:
+                        TextStyle(color: Colors.green.shade900, fontSize: 18),
                   ),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text("3",style: TextStyle(color: Colors.green.shade900,fontSize: 18),),
-                  ),
-                ],
-              ),
-            )
-
-          ],
-
+                ),
+              ],
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -142,12 +142,11 @@ class _MyHomePageState extends State<MyHomePage> {
             buildDashCards(
                 img: "assets/images/pending.png",
                 press: () {
-
-                  Get.to(OrderPage(
-                    // fromScreen: "Pending",
-                    // businessName:
-                    // widget.businessName ?? businessName1,
-                  ));
+                  Get.to(const OrderPage(
+                      // fromScreen: "Pending",
+                      // businessName:
+                      // widget.businessName ?? businessName1,
+                      ));
                 },
                 count: 1.toString()),
             buildDashCards(
@@ -196,24 +195,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Container buildDashCards({String img, Function press, String count}) {
+  Container buildDashCards(
+      {String? img = '', required Function press, String? count = '0'}) {
     return Container(
       child: InkWell(
         child: Stack(children: [
-          Image.asset(img),
+          Image.asset(img!),
           Positioned(
               right: 50,
               top: 90,
               child: Text(
-                count,
+                count!,
                 style: GoogleFonts.basic(color: Colors.white, fontSize: 18),
               ))
         ]),
-        onTap: press,
+        onTap: () {
+          press();
+        },
       ),
     );
   }
-
 }
-
-

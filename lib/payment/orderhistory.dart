@@ -4,9 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OrderHistory extends StatefulWidget {
-  final String businessName;
+  final String? businessName;
 
-  const OrderHistory({Key key, this.businessName}) : super(key: key);
+  const OrderHistory({super.key, this.businessName});
 
   @override
   _OrderHistoryState createState() => _OrderHistoryState();
@@ -14,41 +14,43 @@ class OrderHistory extends StatefulWidget {
 
 class _OrderHistoryState extends State<OrderHistory> {
   var currentDate = DateTime.now();
-  var currentEndDate = DateTime.now().add(Duration(days: 1));
+  var currentEndDate = DateTime.now().add(const Duration(days: 1));
   var commission = 0.0;
 
   _selectstartDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: currentDate, // Refer step 1
       firstDate: DateTime(2000),
-      lastDate: currentEndDate.subtract(Duration(days: 1)),
+      lastDate: currentEndDate.subtract(const Duration(days: 1)),
     );
-    if (picked != null && picked != currentDate)
+    if (picked != null && picked != currentDate) {
       setState(() {
         currentDate = picked;
       });
+    }
   }
 
   _selectendDate(BuildContext context) async {
-    final DateTime picked = await showDatePicker(
+    final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: currentEndDate, // Refer step 1
-      firstDate: currentDate.add(Duration(days: 1)),
-      lastDate: DateTime.now().add(Duration(days: 1)),
+      firstDate: currentDate.add(const Duration(days: 1)),
+      lastDate: DateTime.now().add(const Duration(days: 1)),
     );
-    if (picked != null && picked != currentEndDate)
+    if (picked != null && picked != currentEndDate) {
       setState(() {
         currentEndDate = picked;
       });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Revenue")),
+        appBar: AppBar(title: const Text("Revenue")),
         body: ListView(children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -56,8 +58,8 @@ class _OrderHistoryState extends State<OrderHistory> {
             children: [
               Column(
                 children: [
-                  Text("From Date"),
-                  SizedBox(
+                  const Text("From Date"),
+                  const SizedBox(
                     height: 5,
                   ),
                   InkWell(
@@ -78,8 +80,8 @@ class _OrderHistoryState extends State<OrderHistory> {
               ),
               Column(
                 children: [
-                  Text("To Date"),
-                  SizedBox(
+                  const Text("To Date"),
+                  const SizedBox(
                     height: 5,
                   ),
                   InkWell(
@@ -100,12 +102,12 @@ class _OrderHistoryState extends State<OrderHistory> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
@@ -113,7 +115,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                 "Total Earnings : ₹${100}",
                 style: GoogleFonts.basic(fontSize: 18),
               )),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -127,7 +129,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                     children: [
                       InkWell(
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20.0),
                               ),
@@ -141,7 +143,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                   style: GoogleFonts.basic(
                                       color: Colors.white, fontSize: 18),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Text(
@@ -171,7 +173,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                       ),
                       InkWell(
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20.0),
                               ),
@@ -185,7 +187,7 @@ class _OrderHistoryState extends State<OrderHistory> {
                                   style: GoogleFonts.basic(
                                       color: Colors.white, fontSize: 18),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 Text(

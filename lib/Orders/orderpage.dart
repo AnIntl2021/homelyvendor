@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,7 @@ import 'package:homelyvendor/Orders/orderDetail.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class OrderPage extends StatefulWidget {
-  const OrderPage({Key key}) : super(key: key);
+  const OrderPage({super.key});
 
   @override
   _OrderPageState createState() => _OrderPageState();
@@ -16,10 +16,10 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-          title: Text("Your Orders"),
-        ),
-      body:  Padding(
+      appBar: AppBar(
+        title: const Text("Your Orders"),
+      ),
+      body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
               itemCount: 10,
@@ -66,7 +66,7 @@ class _OrderPageState extends State<OrderPage> {
                 //     ? product[product.length - 1]["reason"]
                 //     : "";
                 return Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10),
+                    margin: const EdgeInsets.only(top: 10, bottom: 10),
                     child: createOrderListItem(
                         orderId: "orderId",
                         status: "status",
@@ -83,44 +83,43 @@ class _OrderPageState extends State<OrderPage> {
                         cuid: "cuid",
                         reason: "reason",
                         businessName: "widget.businessName",
-                        userLocation: GeoPoint(1, 2),
+                        // userLocation: const GeoPoint(1, 2),
                         deliverynumber: "customerNumber",
                         deliveryname: "customername"));
-              })
-
-      ),
+              })),
     );
   }
 
   Widget createOrderListItem(
-      {String orderId,
-        String status,
-        String date,
-        String time,
-        String payment,
-        String total,
-        String subTotal,
-        String wallet,
-        String discount,
-        String savings,
-        String name,
-        String number,
-        String email,
-        String cuid,
-        String reason,
-        String businessName,
-        GeoPoint userLocation,
-        String deliverynumber,
-        String deliveryname}) {
+      {String? orderId,
+      String? status,
+      String? date,
+      String? time,
+      String? payment,
+      String? total,
+      String? subTotal,
+      String? wallet,
+      String? discount,
+      String? savings,
+      String? name,
+      String? number,
+      String? email,
+      String? cuid,
+      String? reason,
+      String? businessName,
+      // GeoPoint? userLocation,
+      String? deliverynumber,
+      String? deliveryname}) {
     // print("commision1 ${widget.commision}");
 
-    var earning = ((double.parse(subTotal) - double.parse(savings)) -
-        ((double.parse(subTotal)) * 1))
-        .toString();
+    var earning =
+        ((double.parse(subTotal ?? '0') - double.parse(savings ?? '0')) -
+                ((double.parse(subTotal ?? '0')) * 1))
+            .toString();
 
     return InkWell(
       onTap: () {
-        Get.to(OrderTotal());
+        Get.to(() => const OrderTotal());
         // Get.to(() => OrderDetailScreen(
         //   userLocatiom: userLocation,
         //   businessName: businessName,
@@ -139,23 +138,21 @@ class _OrderPageState extends State<OrderPage> {
         // ));
       },
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8,vertical: 8 ),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
               children: [
                 Text("ORDER ID: $orderId"),
                 Text("Status: $status"),
               ],
-
             ),
 
             Text("Date: $date"),
             // Text("Time: $time"),
             Text("Customer Name: $deliveryname"),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             InkWell(
@@ -164,7 +161,7 @@ class _OrderPageState extends State<OrderPage> {
                 },
                 child: Container(
                     decoration:
-                    BoxDecoration(border: Border.all(color: Colors.blue)),
+                        BoxDecoration(border: Border.all(color: Colors.blue)),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text("Customer Number: $deliverynumber"),
@@ -176,13 +173,12 @@ class _OrderPageState extends State<OrderPage> {
                 Text("Total: $earning"),
               ],
             ),
-            Divider(
+            const Divider(
               thickness: 2,
             )
           ],
         ),
       ),
     );
-
   }
 }
